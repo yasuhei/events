@@ -33,4 +33,4 @@ build/
 .vscode/
 
 # N�o versionar resources
-src/main/resources/application.properties
+src/main/resources
