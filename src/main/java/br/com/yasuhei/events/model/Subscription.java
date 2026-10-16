@@ -2,7 +2,7 @@ package br.com.yasuhei.events.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,21 +10,59 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@Setter
-@Getter
 @Table(name = "tbl_subscription")
-
 public class Subscription {
-    @Id
-    private SubscriptId id;
 
-    @Column(name="created_at")
-    private LocalDateTime createdAt;
+    @EmbeddedId
+    private SubscriptionID id;
 
-    @Column(name="level")
+    @Column(name = "created_at")
+    private LocalDateTime cratedAt;
+
+    @Column(name = "level")
     private Integer level;
 
-    @Column(name="unique_id", nullable = false, length = 45)
+    @Column(name = "unique_id", nullable = false, length = 45)
     private String uniqueID;
 
+    public SubscriptionID getId() {
+        return id;
+    }
+
+    public void setId(SubscriptionID id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getCratedAt() {
+        return cratedAt;
+    }
+
+    public void setCratedAt(LocalDateTime cratedAt) {
+        this.cratedAt = cratedAt;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public String getUniqueID() {
+        return uniqueID;
+    }
+
+    public void setUniqueID(String uniqueID) {
+        this.uniqueID = uniqueID;
+    }
+
+    @Override
+    public String toString() {
+        return "Subscription [id=" + id + ", cratedAt=" + cratedAt + ", level=" + level + ", uniqueID=" + uniqueID
+                + "]";
+    }
+    public void setCreatedAt(LocalDateTime now) {
+        this.cratedAt = now;
+    }
 }

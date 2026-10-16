@@ -9,7 +9,7 @@ import lombok.Setter;
 @Embeddable
 @Getter
 @Setter
-public class SubscriptId {
+public class SubscriptionID {
     @ManyToOne
     @JoinColumn(name = "subscribed_user_id")
     private User user;
